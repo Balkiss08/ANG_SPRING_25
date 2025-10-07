@@ -1,0 +1,108 @@
+<!--<div class="container">
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <table class="table table-striped">
+                <tr>
+                    <th>N°</th>
+                    <th>Id</th>
+                    <th>Nom</th>
+                    <th>Processeur</th>
+                    <th>RAM (GB)</th>
+                    <th>Disque Dur (GB)</th>
+                    <th>Prix (dt)</th>
+                    <th>Marque</th>
+                </tr>
+                @for (pc of pcs; track pc.idPc)
+                {
+                <tbody>
+                    <tr>
+                        <td>{{index+1}}</td>
+                        <td>{{ pc.idPc }}</td>
+                        <td>{{ pc.nomPc }}</td>
+                        <td>{{ pc.processeur }}</td>
+                        <td>{{ pc.ram }}</td>
+                        <td>{{ pc.disqueDur }}</td>
+                        <td>{{ pc.prixPc }}</td>
+                        <td>{{pc.marque.nomMarque}}</td>
+                        <td><a class="btn btn-danger" (click)="supprimerPc(pc)">Supprimer</a></td>
+                        <td><a class="btn btn-success" [routerLink]="['/updatePc',pc.idPc]">Modifier</a></td>
+                        @if(pc.marque){
+                        <td>{{pc.marque.nomMarque}}</td> }
+                        @else {
+                        <td>PAS DE MARQUE</td>
+                        }
+
+                    </tr>
+                    <!--
+<td><a class="btn btn-danger"
+(click)="supprimerProduit(produit)">Supprimer</a></td>
+<td><a class="btn btn-success"
+[routerLink]="['/updateProduit',produit.idProduit]">Modifier</a></td> 
+
+                </tbody>
+                }
+            </table>
+        </div>
+    </div>
+</div>-->
+<div class="container">
+
+    <div class="container">
+        <div class="col-sm-4 col-md-4 col-lg-4 mb-4">
+            <label>Marques </label>
+            <select class="form-control form-control-lg" id="idMarque" name="idMarque" [(ngModel)]="IdMarque"
+                (change)="onChange()">
+                @for(marq of marques;track marq.idMarque)
+                {
+                <option value="{{marq.idMarque}}"> {{marq.nomMarque}} </option>
+                }
+            </select>
+        </div>
+
+
+        <div class="card shadow mb-4">
+            <div class="card-body">
+                <table class="table table-striped">
+                    <tr>
+
+                        <th>Id</th>
+                        <th>Nom</th>
+                        <th>Processeur</th>
+                        <th>RAM (GB)</th>
+                        <th>Disque Dur (GB)</th>
+                        <th>Prix (dt)</th>
+                        <th>Marque</th>
+                    </tr> @for (pc of pcs; track pc.idPc)
+                    {
+
+                    <tbody>
+                        <tr>
+                            <td>{{ pc.idPc }}</td>
+                            <td>{{ pc.nomPc }}</td>
+                            <td>{{ pc.processeur }}</td>
+                            <td>{{ pc.ram }}</td>
+                            <td>{{ pc.disqueDur }}</td>
+                            <td>{{ pc.prixPc }}</td>
+                              @if(pc.marque){
+                            <td>{{pc.marque.nomMarque}}</td> }
+                            @else {
+                            <td>PAS DE MARQUE</td>
+                            }
+                             <!-- <td>{{pc.marque.nomMarque}}</td>
+                              <td><a class="btn btn-danger" (click)="supprimerPc(pc)">Supprimer</a></td>
+                            <td><a class="btn btn-success" [routerLink]="['/updatePc',pc.idPc]">Modifier</a></td> -->
+                         
+
+
+
+                            <!-- <td><a class="btn btn-danger" (click)="supprimerProduit(produit)">Supprimer</a></td> 
+               <td><a class="btn btn-success" [routerLink]="['/updateProduit',produit.idProduit]">Modifier</a></td> -->
+                        </tr>
+                    </tbody>
+                    }
+
+
+                </table>
+            </div>
+        </div>
+    </div>

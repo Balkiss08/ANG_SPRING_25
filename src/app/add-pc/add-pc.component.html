@@ -1,0 +1,51 @@
+<div class="container">
+    <div>
+        <h2>Ajouter un PC :</h2>
+    </div>
+    <form>
+
+        <div hidden class="col-sm-2 col-md-2 col-lg-2">
+            <label>ID Pc</label>
+            <input type="number" [(ngModel)]="newPc.idPc" name="idPc" class="form-control">
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label>Nom Pc</label>
+            <input type="text" [(ngModel)]="newPc.nomPc" name="nomPc" class="form-control">
+        </div>
+        <div class="col-sm-2 col-md-2 col-lg-2">
+            <label>Processeur</label>
+            <input type="text" [(ngModel)]="newPc.processeur" name="processeur" class="form-control">
+        </div>
+        <div class="col-sm-2 col-md-2 col-lg-2">
+            <label>RAM</label>
+            <input type="number" [(ngModel)]="newPc.ram" name="ram" class="form-control">
+        </div>
+        <div class="col-sm-2 col-md-2 col-lg-2">
+            <label>Disque Dur</label>
+            <input type="number" [(ngModel)]="newPc.disqueDur" name="disqueDur" class="form-control">
+        </div>
+        <div class="col-sm-2 col-md-2 col-lg-2">
+            <label>Prix Pc </label>
+            <input type="number" [(ngModel)]="newPc.prixPc" name="prixPc" class="form-control">
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label>Marque</label>
+            <select class="form-control form-control-lg" id="idMarque" name="idMarque" [(ngModel)]="newIdMarque">
+                @for(marq of marques; track marq.idMarque){
+                <option [value]="marq.idMarque"> {{marq.nomMarque}} </option>
+                }
+            </select>
+        </div>
+        <div class="col-sm-16 col-md-16 col-lg-16">
+            <label class="mb-2">Image :</label>
+            <input type="file" (change)="onImageUpload($event)" name="logo" class="form-control">
+        </div>
+        <div class="col-sm-16 col-md-16 col-lg-16">
+            <img [src]="imagePath" class="card-img-top img-fluid rounded-start" style="width: 500px; height: 300px" />
+        </div>
+        <div class="mt-2">
+
+            <button type="submit" (click)="addPc()" class="btn btn-success">Ajouter</button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,52 @@
+<div class="container">
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nom</th>
+                        <th>Processeur</th>
+                        <th>RAM (GB)</th>
+                        <th>Disque Dur (GB)</th>
+                        <th>Prix (dt)</th>
+                        <th>Marque</th>
+                    </tr>
+                </thead>
+
+                @for (pc of pcs; track pc;let index =$index;let nbr=$count){
+
+                <tbody>
+                    <tr>
+                        <td>{{ pc.idPc }}</td>
+                        <td>{{ pc.nomPc }}</td>
+                        <td>{{ pc.processeur }}</td>
+                        <td>{{ pc.ram }}</td>
+                        <td>{{ pc.disqueDur }}</td>
+                        <td>{{ pc.prixPc }}</td>
+                        <td>{{pc.marque.nomMarque}}</td>
+                        <td>
+                            <img *ngIf="pc.images && pc.images.length > 0" class="card-img-top img-responsive"
+                                [src]="'data:' + pc.images[0].type + ';base64,' + pc.images[0].image"
+                                style="height:50px;width:100px">
+                            <img *ngIf="!pc.images || pc.images.length === 0" src="assets/default.jpg"
+                                style="height:50px;width:100px">
+                        </td>
+                        @if(authService.isAdmin()) {
+                        <td><a class="btn btn-danger" (click)="supprimerPc(pc)">Supprimer</a></td>
+                        <td><a class="btn btn-success" [routerLink]="['/updatePc',pc.idPc]">Modifier</a></td>
+                        }
+
+                    </tr>
+                </tbody>}
+                @empty {
+                <h1>Aucun pc trouvé !</h1>
+                }
+
+
+
+            </table>
+
+        </div>
+    </div>
+</div>
